@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    <title>Books</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -12,29 +13,31 @@
     <div class="card-body">
         <div th:if="${mensagem}" th:text="${messages}"></div>
         <form action="/book/form/save" method="POST">
+            <div th:if="${book}" class="input-group mb-3" style="width: 300px;">
+                <input type="text" readonly id="id" name="id" th:value="${book?.id}" class="form-control"/>
+            </div>
             <div class="input-group mb-3" style="width: 300px;">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">Nome</span>
                 </div>
                 <input type="text" class="form-control" id="name" name="name" placeholder="Livro" aria-label="Nome"
-                       aria-describedby="basic-addon1">
+                       aria-describedby="basic-addon1" th:value="${book?.name}">
             </div>
             <div class="input-group mb-3" style="width: 300px;">
                 <div class="input-group-prepend">
                     <label class="input-group-text" for="inputGroupSelect01">Author</label>
                 </div>
                 <select name="author" class="custom-select" id="inputGroupSelect01">
-                    <option th:each="author : ${authorlist}"
+                    <option th:each="author : ${authorList}"
                             th:value="${author.id}"
-                            th:text="${author.name}"/>
+                            th:text="${author.name}"
+                            th:selected="${author.id} == ${book?.author?.id}"/>
                 </select>
             </div>
             <button type="submit" class="btn btn-primary">Salvar Livro</button>
         </form>
     </div>
 </div>
-
-
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

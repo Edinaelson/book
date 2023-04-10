@@ -1,5 +1,4 @@
 package br.com.book.controller;
-
 import br.com.book.entity.Book;
 import br.com.book.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;

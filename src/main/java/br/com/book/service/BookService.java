@@ -1,5 +1,4 @@
 package br.com.book.service;
-
 import br.com.book.entity.Book;
 import br.com.book.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,5 +18,10 @@ public class BookService {
     public List<Book> findAll() {
 
         return this.bookRepository.findAll();
+    }
+
+    public Book findById(Long id) {
+
+        return this.bookRepository.findById(id).get();
     }
 }
